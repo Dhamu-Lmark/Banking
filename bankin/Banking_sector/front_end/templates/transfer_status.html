@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Welcome to View Banking </h1>
+<table>
+    <thead>
+        <tr>
+            <th>Account Name</th>
+            <th>Account Number</th>
+            <th>Amount</th>
+            <th>Debit/Credit</th>
+            <th>Date/Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tran in tf %}
+        <tr>
+            <td>{{ tran.sender.name }}</td>
+            <td>{{ tran.sender.account_no }}</td>
+            <td>-{{ tran.amount }}</td>
+            <td>Debit</td>
+            <td>{{ tran.time }}</td>
+        </tr>
+        <tr>
+            <td>{{ tran.receiver.name }}</td>
+            <td>{{ tran.receiver.account_no }}</td>
+            <td>{{ tran.amount }}</td>
+            <td>Credit</td>
+            <td>{{ tran.time }}</td>
+        </tr>
+        <tr>
+            <td>{{ tran.receiver.name }}</td>
+            <td>{{ tran.receiver.account_no }}</td>
+            <td>{{ tran.amount }}</td>
+            <td>Another Credit</td>
+            <td>{{ tran.time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Welcome to View Banking </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Account No</th>
+            <th>Balance</th>
+            <th>Phone number</th>
+            <th>DOB</th>
+            <th>Ac created date</th>
+            <th>Edt</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Account in ac %}
+        <tr>
+            
+            <td>{{ Account.name}}</td>
+            <td>{{ Account.account_no}}</td>
+            <td>{{ Account.ac_balance}}</td>
+            <td>{{ Account.ph_number}}</td>
+            <td>{{ Account.date_of_birth}}</td>
+            <td>{{ Account.create_date}}</td>
+            <td><a class="btn" href={% url 'edit_account' Account.id %}> edit</a></td>
+            <td><a class="btn" href={% url 'delete_account' Account.id %}> Delete</a></td>
+            
+        </tr>
+        {% endfor %}
+    <tbody>
+</table>
+
+
+{% endblock %}
